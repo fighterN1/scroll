@@ -1,25 +1,18 @@
 <!doctype html>
 <html>
 <head>
-<meta charset="utf-8">
-<meta id="viewport" name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
-<title></title>
-<meta name="keywords" content="财经,股票,证券,金融,港股,行情,基金,债券,期货,外汇,保险,银行,博客,股票分析软件">
-<meta name="description" content="中金在线－中国人的金融门户网站，覆盖财经、股票、 证券、金融、港股、行情、基金、债券、期货、外汇、保险、银行、博客、股票分析软件等多种面向个人和企业的服务。">
-<link rel="canonical" href="http://www.cnfol.com/" >
-<link type="text/css" rel="stylesheet" href="http://hs.3g.cnfol.com/f=ub/Css/Iphone/pReset.css">
-<script type="text/javascript" src="http://hs.3g.cnfol.com/f=ug/Js/Base/ResetPageFontSize750.js"></script>
-<script type="text/javascript" src="http://hs.3g.cnfol.com/uj/Js/PhoneNet615/jquery-1.11.1.min.js"></script>
-<!-- 广告投放代码 -->
-
-
-<!-- 统计代码 -->
-
+	<meta charset="utf-8">
+	<meta id="viewport" name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+	<title></title>
+	<meta name="keywords" content="">
+	<meta name="description" content="">
+	<link type="text/css" rel="stylesheet" href="css/pReset.css">
+	<script type="text/javascript" src="js/ResetPageFontSize750.js"></script>
 </head>
 
 <body>
 <style>
-.container{font-size:.3rem;}
+	.container{font-size:.3rem;}
 	.container{width:90%;width:100%;height:100%;background:#FFFF33;position:absolute;margin:auto;}
 	.scrollDiv{height:300px;background:#f6f6f6;overflow-y: scroll;}
 	.scrollDiv-child{width:80%;margin:auto;}
@@ -38,103 +31,9 @@
 		</div>
 	</div>
 </body>
-<script>
-	$.smartScroll = function(container, selectorScrollable) {
-	    // 如果没有滚动容器选择器，或者已经绑定了滚动时间，忽略
-	    if (!selectorScrollable || container.data('isBindScroll')) {
-	        return;
-	    }
 
-	    // 是否是搓浏览器
-	    // 自己在这里添加判断和筛选
-	    var isSBBrowser;
-
-	    var data = {
-	        posY: 0,
-	        maxscroll: 0
-	    };
-
-	    // 事件处理
-	    container.on({
-	        touchstart: function (event) {
-	            var events = event.originalEvent.touches[0] || event;
-	            
-	            // 先求得是不是滚动元素或者滚动元素的子元素
-	            var elTarget = $(event.target);
-	            
-	            if (!elTarget.length) {
-	                return;    
-	            }
-	            
-	            var elScroll;
-	            
-	            // 获取标记的滚动元素，自身或子元素皆可
-	            if (elTarget.is(selectorScrollable)) {
-	                elScroll = elTarget;
-	            } else if ((elScroll = elTarget.parents(selectorScrollable)).length == 0) {
-	                elScroll = null;
-	            }
-	            
-	            if (!elScroll) {
-	                return;
-	            }
-	            
-	            // 当前滚动元素标记
-	            data.elScroll = elScroll;
-	            
-	            // 垂直位置标记
-	            data.posY = events.pageY;
-	            data.scrollY = elScroll.scrollTop();
-	            // 是否可以滚动
-	            data.maxscroll = elScroll[0].scrollHeight - elScroll[0].clientHeight;
-	        },
-	        touchmove: function () {
-	            // 如果不足于滚动，则禁止触发整个窗体元素的滚动
-	            if (data.maxscroll <= 0 || isSBBrowser) {
-	                // 禁止滚动
-	                event.preventDefault();
-	            }
-	            // 滚动元素
-	            var elScroll = data.elScroll;
-	            // 当前的滚动高度
-	            var scrollTop = elScroll.scrollTop();
-	    
-	            // 现在移动的垂直位置，用来判断是往上移动还是往下
-	            var events = event.touches[0] || event;
-	            // 移动距离
-	            var distanceY = events.pageY - data.posY;
-	    
-	            if (isSBBrowser) {
-	                elScroll.scrollTop(data.scrollY - distanceY);
-	                elScroll.trigger('scroll');
-	                return;
-	            }
-	    
-	            // 上下边缘检测
-	            if (distanceY > 0 && scrollTop == 0) {
-	                // 往上滑，并且到头
-	                // 禁止滚动的默认行为
-	                event.preventDefault();
-	                return;
-	            }
-	    
-	            // 下边缘检测
-	            if (distanceY < 0 && (scrollTop + 1 >= data.maxscroll)) {
-	                // 往下滑，并且到头
-	                // 禁止滚动的默认行为
-	                event.preventDefault();
-	                return;
-	            }
-	        },
-	        touchend: function () {
-	            data.maxscroll = 0;
-	        }    
-	    });
-
-	    // 防止多次重复绑定
-	    container.data('isBindScroll', true);
-	};
-</script>
+<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+<script src="js/smallScroll.js"></script>
 <script>
 //数据填充
 function fullData(ele,num,pre){
